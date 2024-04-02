@@ -1,13 +1,4 @@
-FROM gradle:7.2.0-jdk17 AS build
-COPY . ./boohome
-RUN chmod 777 ./boohome
-WORKDIR ./boohome
-RUN gradle build --stacktrace
-
-FROM openjdk:17.0.1-jdk-slim
-ENV JAR_NAME=boohome-0.0.1-SNAPSHOT.jar
-ENV APP_HOME=/boohome
-WORKDIR $APP_HOME
-COPY --from=BUILD $APP_HOME .
-EXPOSE 8080
-ENTRYPOINT exec java -jar $APP_HOME/build/libs/$JAR_NAME
+FROM openjdk:17.0.2-jdk-slim-buster
+ARG JAR_FILE=build/lib/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
