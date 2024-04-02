@@ -1,5 +1,5 @@
 FROM gradle:7.2.0-jdk17 AS build
-COPY ./../boohome .
+COPY . .
 WORKDIR ./boohome
 RUN gradle build || return 1
 
