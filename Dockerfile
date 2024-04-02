@@ -4,11 +4,9 @@ COPY . .
 RUN gradle build
 
 FROM openjdk:17.0.1-jdk-slim
-
+ENV JAR_NAME=app.jar
+ENV APP_HOME=/usr/app/
+WORKDIR $APP_HOME
+COPY --from=BUILD $APP_HOME .
 EXPOSE 8080
-
-RUN mkdir /app
-
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
-
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
+ENTRYPOINT exec java -jar $APP_HOME/build/libs/$JAR_NAME
