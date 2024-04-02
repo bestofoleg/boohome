@@ -1,6 +1,6 @@
 FROM gradle:7.2.0-jdk17 AS build
 COPY --chown=gradle:gradle . /home/bestofoleg/java-apps-repo/boohome/
-WORKDIR /home/gradle/src
+WORKDIR /home/bestofoleg/java-apps-repo/boohome/
 RUN gradle build --no-daemon
 
 FROM openjdk:17.0.1-jdk-slim
