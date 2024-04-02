@@ -1,7 +1,7 @@
 FROM gradle:7.2.0-jdk17 AS build
 COPY . ./boohome
 WORKDIR ./boohome
-RUN ./gradlew.bat build
+RUN gradle build
 
 FROM openjdk:17.0.1-jdk-slim
 ENV JAR_NAME=boohome-0.0.1-SNAPSHOT.jar
