@@ -1,5 +1,5 @@
 FROM gradle:7.2.0-jdk17 AS build
-COPY --chown=gradle:gradle . /home/bestofoleg/java-apps-repo/boohome/src
+COPY --chown=gradle:gradle . /home/bestofoleg/java-apps-repo/boohome/
 WORKDIR /home/gradle/src
 RUN gradle build --no-daemon
 
