@@ -1,6 +1,5 @@
 FROM gradle:7.2.0-jdk17 AS build
-ADD .
-COPY --chown=gradle:gradle . /home/gradle
+ADD ./* /home/gradle
 WORKDIR /home/gradle
 RUN gradle build || return 1
 
