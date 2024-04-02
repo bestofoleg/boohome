@@ -1,5 +1,6 @@
 FROM gradle:7.2.0-jdk17 AS build
 COPY . ./boohome
+RUN chmod 777 ./boohome
 WORKDIR ./boohome
 RUN gradle build
 
