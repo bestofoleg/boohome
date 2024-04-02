@@ -1,9 +1,9 @@
 FROM gradle:7.2.0-jdk17 AS build
-COPY --chown=gradle:gradle . /home/gradle/src
+COPY --chown=gradle:gradle . /home/bestofoleg/java-apps-repo/boohome/src
 WORKDIR /home/gradle/src
 RUN gradle build --no-daemon
 
-FROM openjdk:8-jre-slim
+FROM openjdk:17-jre-slim
 
 EXPOSE 8080
 
