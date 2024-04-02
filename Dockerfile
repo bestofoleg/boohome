@@ -3,7 +3,7 @@ COPY --chown=gradle:gradle . /home/bestofoleg/java-apps-repo/boohome/src
 WORKDIR /home/gradle/src
 RUN gradle build --no-daemon
 
-FROM openjdk:17-jre-slim
+FROM openjdk:17.0.1-jdk-slim
 
 EXPOSE 8080
 
