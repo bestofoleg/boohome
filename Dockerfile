@@ -1,5 +1,5 @@
 FROM gradle:7.2.0-jdk17 AS build
-ADD ./* /home/gradle
+COPY ./* ./home/gradle
 WORKDIR /home/gradle
 RUN gradle build || return 1
 
