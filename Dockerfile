@@ -1,12 +1,11 @@
 FROM gradle:7.2.0-jdk17 AS build
-COPY . ./app
-WORKDIR ./app
-RUN ls -l
-RUN gradle build || return 1
+COPY . ./boohome
+WORKDIR ./boohome
+RUN ./gradlew.bat build
 
 FROM openjdk:17.0.1-jdk-slim
 ENV JAR_NAME=boohome-0.0.1-SNAPSHOT.jar
-ENV APP_HOME=./boohome
+ENV APP_HOME=/boohome
 WORKDIR $APP_HOME
 COPY --from=BUILD $APP_HOME .
 EXPOSE 8080
