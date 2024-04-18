@@ -21,6 +21,6 @@ public class TestController {
     @PostMapping("/test/alice")
     public ResponseEntity<Void> testAlice(@RequestBody Map<String, Object> aliceRequest) {
         log.info("Получено сообщения с сервера Яндекс через Алису: {} ", aliceRequest);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }
